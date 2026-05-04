@@ -1,24 +1,39 @@
 {
   "version": 1,
-  "author": "Projeto de Controle de Cores / Iza",
+  "author": "Controle de Cores",
   "editor": "wokwi",
   "parts": [
-    { "type": "board-pi-pico", "id": "pico", "top": 0, "left": 0, "attrs": {} },
-    { "type": "wokwi-rgb-led", "id": "led_rgb", "top": -80, "left": 150, "attrs": { "common": "cathode" } },
-    { "type": "wokwi-pushbutton", "id": "botao", "top": 80, "left": 150, "attrs": { "color": "green" } },
-    { "type": "wokwi-resistor", "id": "r_vermelho", "top": -40, "left": 80, "attrs": { "value": "220" } },
-    { "type": "wokwi-resistor", "id": "r_verde", "top": -20, "left": 80, "attrs": { "value": "220" } },
-    { "type": "wokwi-resistor", "id": "r_azul", "top": 0, "left": 80, "attrs": { "value": "220" } }
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-led", "id": "led_red", "top": -100, "left": -200, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "r_red", "top": -100, "left": -150, "attrs": { "resistance": "220" } },
+    { "type": "wokwi-led", "id": "led_green", "top": -100, "left": -50, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "r_green", "top": -100, "left": 0, "attrs": { "resistance": "220" } },
+    { "type": "wokwi-led", "id": "led_blue", "top": -100, "left": 100, "attrs": { "color": "blue" } },
+    { "type": "wokwi-resistor", "id": "r_blue", "top": -100, "left": 150, "attrs": { "resistance": "220" } },
+    { "type": "wokwi-pushbutton", "id": "btn_red", "top": 50, "left": -200, "attrs": {} },
+    { "type": "wokwi-pushbutton", "id": "btn_green", "top": 50, "left": -50, "attrs": {} },
+    { "type": "wokwi-pushbutton", "id": "btn_blue", "top": 50, "left": 100, "attrs": {} }
   ],
   "connections": [
-    [ "pico:GP15", "r_vermelho:1", "red", [ "v0" ] ],
-    [ "r_vermelho:2", "led_rgb:R", "red", [ "v0" ] ],
-    [ "pico:GP14", "r_verde:1", "green", [ "v0" ] ],
-    [ "r_verde:2", "led_rgb:G", "green", [ "v0" ] ],
-    [ "pico:GP13", "r_azul:1", "blue", [ "v0" ] ],
-    [ "r_azul:2", "led_rgb:B", "blue", [ "v0" ] ],
-    [ "pico:GND.1", "led_rgb:COM", "black", [ "v0" ] ],
-    [ "pico:GP16", "botao:1.l", "green", [ "v0" ] ],
-    [ "pico:GND.2", "botao:2.l", "black", [ "v0" ] ]
+    ["pico:GP0", "r_red:1", "green"],
+    ["r_red:2", "led_red:A", "green"],
+    ["led_red:C", "pico:GND", "black"],
+
+    ["pico:GP1", "r_green:1", "green"],
+    ["r_green:2", "led_green:A", "green"],
+    ["led_green:C", "pico:GND", "black"],
+
+    ["pico:GP2", "r_blue:1", "green"],
+    ["r_blue:2", "led_blue:A", "green"],
+    ["led_blue:C", "pico:GND", "black"],
+
+    ["pico:GP3", "btn_red:1", "blue"],
+    ["btn_red:2", "pico:GND", "black"],
+
+    ["pico:GP4", "btn_green:1", "blue"],
+    ["btn_green:2", "pico:GND", "black"],
+
+    ["pico:GP5", "btn_blue:1", "blue"],
+    ["btn_blue:2", "pico:GND", "black"]
   ]
 }
